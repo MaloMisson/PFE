@@ -3,6 +3,7 @@
     "test": "vows tests/*.js"
   },
   "dependencies": {
+    "heroku": "^7.24.3",
     "vows": "^0.8.2"
   }
 }
