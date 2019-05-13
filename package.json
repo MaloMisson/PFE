@@ -1,14 +1,12 @@
 {
   "name": "pfe-2019",
   "version": "1.0.0",
-  "main": "./www",
-  "private": true,
   "scripts": {
-    "start": "./www",
-    "server": "nodemon ./www",
+    "start": "node app.js",
     "test": "vows tests/*.js"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "heroku": "^7.24.3",
     "nodemon": "^1.19.0",
     "vows": "^0.8.2"
