@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "tests/*.js"
+    "test": "vows tests/*.js"
   },
   "dependencies": {
     "vows": "^0.8.2"

@@ -1,4 +1,4 @@
-/*var assert = require('assert'),
+var assert = require('assert'),
     vows = require('vows');
 
 vows.describe('test1').addBatch({
@@ -12,6 +12,3 @@ vows.describe('test1').addBatch({
         }
     }
 }).export(module);
-*/
-
-return true;
