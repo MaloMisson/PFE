@@ -4,6 +4,8 @@
   "main": "./www",
   "private": true,
   "scripts": {
+    "start": "./www",
+    "server": "nodemon ./www",
     "test": "vows tests/*.js"
   },
   "dependencies": {
