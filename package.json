@@ -1,4 +1,8 @@
 {
+  "name": "pfe-2019",
+  "version": "1.0.0",
+  "main": "./www",
+  "private": true,
   "scripts": {
     "test": "vows tests/*.js"
   },
