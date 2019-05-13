@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "heroku": "^7.24.3",
+    "nodemon": "^1.19.0",
     "vows": "^0.8.2"
   }
 }
