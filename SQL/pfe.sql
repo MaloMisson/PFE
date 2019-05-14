@@ -22,3 +22,11 @@ CREATE TABLE pfe.articles (
   FOREIGN KEY (vendeur) REFERENCES pfe.utilisateurs(u_id),
   FOREIGN KEY (acheteur) REFERENCES pfe.utilisateurs(u_id)
 );
+
+INSERT INTO pfe.utilisateurs (
+  pseudo,nom,prenom,mot_de_passe,adresse,email,telephone
+) VALUES ('jholodi16','Holodiline','Jérémy','mdpjeremy','Rue Random 42 Bruxelles','jeremy.holodiline@student.vinci.be','0439098765');
+
+INSERT INTO pfe.utilisateurs (
+  pseudo,nom,prenom,mot_de_passe,adresse,email,telephone
+) VALUES ('mmisson16','Misson','Malo','mdpmalo','Rue du Sanglier 24 Bruxelles','malo.misson@student.vinci.be','0427638522');
