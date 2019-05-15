@@ -1,7 +1,16 @@
+#!/usr/bin/env node
+
+if(!process.env.NODE_ENV){
+    console.error("NODE_ENV have not been set. Set instructions are in the readme");
+}
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config()
+}
 var app = require('../app');
 var debug = require('debug')('generated-app:server');
 var http = require('http');
 
+console.log("port : "+process.env.PORT);
 var port = normalizePort(process.env.PORT || '3030');
 app.set('port', port);
 

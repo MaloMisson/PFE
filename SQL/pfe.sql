@@ -27,5 +27,6 @@ CREATE TABLE pfe.products (
   FOREIGN KEY (id_buyer) REFERENCES pfe.users(id_user)
 );
 
-INSERT INTO pfe.users (pseudo, firstname, lastname, password, address, number, zip_code, city, country, email, phone) VALUES ('jholodi16','Holodiline','Jérémy','mdpjeremy','Rue Random', '42', '1000', 'Bruxelles', 'Belgium', 'jeremy.holodiline@student.vinci.be','0439098765');
-INSERT INTO pfe.users (pseudo, firstname, lastname, password, address, number, zip_code, city, country, email, phone) VALUES ('mmisson16','Misson','Malo','mdpmalo','Rue du Sanglier', '24', '1000', 'Bruxelles', 'Belgium', 'malo.misson@student.vinci.be','0427638522');
+INSERT INTO pfe.users (pseudo, firstname, lastname, password, address, number, zip_code, city, country, email, phone) VALUES ('jholodi16','Jérémy','Holodiline','mdpjeremy','Rue Random', '42', '1000', 'Bruxelles', 'Belgium', 'jeremy.holodiline@student.vinci.be','0439098765');
+INSERT INTO pfe.users (pseudo, firstname, lastname, password, address, number, zip_code, city, country, email, phone) VALUES ('mmisson16','Malo','Misson','mdpmalo','Rue Truc', '24', '1000', 'Bruxelles', 'Belgium', 'malo.misson@student.vinci.be','0427638522');
+INSERT INTO pfe.users (pseudo, firstname, lastname, password, address, number, zip_code, city, country, email, phone) VALUES ('amozzon16','Arturo','Mozzon','mdparturo','Rue Machin', '93', '1000', 'Bruxelles', 'Belgium', 'arturo.mozzon@student.vinci.be','0456286305');
