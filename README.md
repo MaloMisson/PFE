@@ -7,6 +7,7 @@ install :
 - vows : for testing
 - pg : postgresql
 - debug : debuging tool
+- bootstrap: frontend
 
 files :
 - .travis.yml : is use by Travis
