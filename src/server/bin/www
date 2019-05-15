@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
-console.log(process.env);
+if(!process.env.NODE_ENV){
+    console.error("NODE_ENV have not been set. Set instructions are in the readme");
+}
 if (process.env.NODE_ENV === 'development') {
   require('dotenv').config()
 }
