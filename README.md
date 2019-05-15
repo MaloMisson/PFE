@@ -6,6 +6,7 @@ install :
 - nodemon : reaload automatically
 - vows : for testing
 - pg : postgresql
+- debug : debuging tool
 
 files :
 - .travis.yml : is use by Travis

@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node src/server/bin/www",
     "test": "vows tests/*.js"
   },
   "dependencies": {
+    "debug": "^4.1.1",
     "express": "^4.16.4",
     "nodemon": "^1.19.0",
     "pg": "^7.11.0",
