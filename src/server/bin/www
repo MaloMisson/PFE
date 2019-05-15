@@ -1,7 +1,8 @@
 #!/usr/bin/env node
+const color = require("../modules/color.js");
 
 if(!process.env.NODE_ENV){
-    console.error("NODE_ENV have not been set. Set instructions are in the readme");
+    console.error(color.RED,red(),"/!\ NODE_ENV have not been set. Set instructions are in the readme",color.RESET);
 }
 if (process.env.NODE_ENV === 'development') {
   require('dotenv').config()
@@ -9,9 +10,8 @@ if (process.env.NODE_ENV === 'development') {
 var app = require('../app');
 var debug = require('debug')('generated-app:server');
 var http = require('http');
-
-console.log("port : "+process.env.PORT);
 var port = normalizePort(process.env.PORT || '3030');
+console.log("Port : "+port);
 app.set('port', port);
 
 var server = http.createServer(app);
