@@ -8,6 +8,7 @@ install :
 - pg : postgresql
 - debug : debuging tool
 - bootstrap: frontend
+- dotenv : environement variables
 
 files :
 - .travis.yml : is use by Travis
