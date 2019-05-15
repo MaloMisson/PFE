@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon src/server/bin/www",
     "test": "vows tests/*.js",
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "debug": "^4.1.1",
     "express": "^4.16.4",
     "nodemon": "^1.19.0",
     "pg": "^7.11.0",
