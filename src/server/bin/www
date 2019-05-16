@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 const color = require("../modules/color.js");
+const util = require('../modules/util');
 
 if(!process.env.NODE_ENV){
-    console.error(color.RED,red(),"/!\ NODE_ENV have not been set. Set instructions are in the readme",color.RESET);
+    util.printWarning("NODE_ENV have not been set. Set instructions are in the readme");
 }
 if (process.env.NODE_ENV === 'development') {
   require('dotenv').config()
