@@ -1,11 +1,20 @@
 const express = require('express');
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 //Router
 const indexRouter = require('./routes/index');
+const APIRouter = require('./routes/api');
+const APIUser = require('./routes/api_user');
+const APIArticle = require('./routes/api_article');
 
 //Routes
 app.use('/', indexRouter);
+app.use('/API/', APIRouter);
+app.use('/API/user/', APIUser);
+app.use('/API/article/', APIArticle);
 
 
 // catch 404 and forward to error handler
