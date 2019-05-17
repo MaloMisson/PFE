@@ -26,7 +26,7 @@ CREATE TABLE pfe.products (
   id_product SERIAL PRIMARY KEY,
   id_seller INTEGER NOT NULL,
   id_category INTEGER NOT NULL,
-  name VARCHAR(255),
+  name VARCHAR(255) NOT NULL,
   description VARCHAR(255) NOT NULL,
   state VARCHAR(255) NOT NULL,
   price VARCHAR(255) NOT NULL,
@@ -36,9 +36,11 @@ CREATE TABLE pfe.products (
 
 CREATE TABLE pfe.sales (
   id_sale SERIAL PRIMARY KEY,
-  id_buyer INTEGER NULL,
+  id_product INTEGER NOT NULL,
+  id_buyer INTEGER NOT NULL,
   sale_date TIMESTAMPTZ DEFAULT Now(),
-  id_stripe VARCHAR(255),
+  id_stripe VARCHAR(255) NOT NULL,
+  FOREIGN KEY (id_product) REFERENCES pfe.products(id_product),
   FOREIGN KEY (id_buyer) REFERENCES pfe.users(id_user)
 )
 
