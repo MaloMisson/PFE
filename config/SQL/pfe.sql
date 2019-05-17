@@ -42,7 +42,7 @@ CREATE TABLE pfe.sales (
   id_stripe VARCHAR(255) NOT NULL,
   FOREIGN KEY (id_product) REFERENCES pfe.products(id_product),
   FOREIGN KEY (id_buyer) REFERENCES pfe.users(id_user)
-)
+);
 
 INSERT INTO pfe.users (pseudo, firstname, lastname, password, address, number, zip_code, city, country, email, phone, description) VALUES ('jholodi16','Jérémy','Holodiline','mdpjeremy','Rue Random', '42', '1000', 'Bruxelles', 'Belgium', 'jeremy.holodiline@student.vinci.be','0439098765', 'je suis un geek');
 INSERT INTO pfe.users (pseudo, firstname, lastname, password, address, number, zip_code, city, country, email, phone, description) VALUES ('mmisson16','Malo','Misson','mdpmalo','Rue Truc', '24', '1000', 'Bruxelles', 'Belgium', 'malo.misson@student.vinci.be','0427638522','je suis egalement un geek');
