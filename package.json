@@ -1,5 +1,5 @@
 {
-  "name": "pfe-2019",
+  "name": "pfe-backend",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
