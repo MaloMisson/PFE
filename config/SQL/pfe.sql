@@ -26,6 +26,7 @@ CREATE TABLE pfe.products (
   id_product SERIAL PRIMARY KEY,
   id_seller INTEGER NOT NULL,
   id_category INTEGER NOT NULL,
+  picture VARCHAR(255) NOT NULL,
   name VARCHAR(255) NOT NULL,
   description VARCHAR(255) NOT NULL,
   state VARCHAR(255) NOT NULL,
