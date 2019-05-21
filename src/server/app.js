@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const db = require('./modules/db1.js');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -9,13 +10,19 @@ const indexRouter = require('./routes/index');
 const APIRouter = require('./routes/api');
 const APIUser = require('./routes/api_user');
 const APIArticle = require('./routes/api_article');
+const APICategorie = require('./routes/api_categorie');
+const APISale = require('./routes/api_sale');
+
+//database connction
+db.connect();
 
 //Routes
 app.use('/', indexRouter);
 app.use('/API/', APIRouter);
-app.use('/API/user/', APIUser);
-app.use('/API/article/', APIArticle);
-
+app.use('/user/', APIUser);
+app.use('/article/', APIArticle);
+app.use('/categorie/', APICategorie);
+app.use('/sale/', APISale);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
