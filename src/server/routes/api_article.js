@@ -13,7 +13,19 @@ router.get('/', function(req, res, next) {
     });
 });
 
-/*PUT product */
+/* GET single product */
+router.get('/', function(req, res, next) {
+    let product = req.body;
+    const queryText = 'SELECT * FROM pfe.products WHERE id_product = $1';
+    const values = [product.id_product];
+    db.db.query(queryText,values).then((articles)=>{
+        res.json(articles);
+    }).catch((err) => {
+        res.status(500).send(err);
+    });
+});
+
+/* PUT product */
 router.put('/',function(req,res,next){
     let product = req.body;
     const queryText = 'INSERT INTO pfe.products (id_seller,id_category,name,description,state,price) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *';
@@ -23,7 +35,7 @@ router.put('/',function(req,res,next){
     });
 });
 
-/*PUT product */
+/* UPDATE product */
 router.post('/update',function(req,res,next){
     let product = req.body;
     const queryText = 'UPDATE pfe.products SET name = $1, description = $2, state = $3, price = $4 WHERE id_product = $5 RETURNING *';

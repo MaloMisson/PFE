@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-/*PUT product */
+/* PUT sale */
 router.put('/',function(req,res,next){
     let sale = req.body;
     const queryText = 'INSERT INTO pfe.sales (id_product,id_buyer,id_stripe) VALUES ($1,$2,$3) RETURNING *';
