@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 const db = require('./modules/db1.js');
+const path = require('path');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //Router
 const indexRouter = require('./routes/index');
-const APIRouter = require('./routes/api');
 const APIUser = require('./routes/api_user');
 const APIArticle = require('./routes/api_article');
 const APICategorie = require('./routes/api_categorie');
@@ -16,9 +16,12 @@ const APISale = require('./routes/api_sale');
 //database connction
 db.connect();
 
+//set views
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 //Routes
 app.use('/', indexRouter);
-app.use('/API/', APIRouter);
 app.use('/user/', APIUser);
 app.use('/article/', APIArticle);
 app.use('/categorie/', APICategorie);
