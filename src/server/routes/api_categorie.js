@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-/*PUT categorie*/
+/* PUT categorie */
 router.put('/:name',function(req,res,next){
     const queryText = 'INSERT INTO pfe.categories (name) VALUES ($1) RETURNING *';
     const values = [req.params.name];
@@ -22,7 +22,7 @@ router.put('/:name',function(req,res,next){
     });
 });
 
-/*UPDATE categorie*/
+/* UPDATE categorie */
 router.post('/:id/:name',function(req,res,next){
     const queryText = 'UPDATE pfe.categories SET name = $1 WHERE id_category = $2 RETURNING *';
     const values = [req.params.name,req.params.id];

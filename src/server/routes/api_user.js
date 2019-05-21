@@ -33,11 +33,6 @@ router.post('/update',function(req, res, next) {
     });
 });
 
-/* POST update. */
-router.post('/update', function(req, res, next) {
-    res.end('update');
-});
-
 /* POST select all user. */
 router.get('/all', function(req, res, next) {
     const queryText = 'SELECT * FROM pfe.users';
