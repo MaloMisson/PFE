@@ -19,6 +19,7 @@ CREATE TABLE pfe.users (
 
 CREATE TABLE pfe.categories(
   id_category SERIAL PRIMARY KEY,
+  picture VARCHAR(255) NOT NULL,
   name VARCHAR(255) NOT NULL
 );
 
