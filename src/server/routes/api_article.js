@@ -25,6 +25,18 @@ router.get('/', function(req, res, next) {
     });
 });
 
+/* GET all products by category */
+router.get('/', function(req, res, next) {
+    let category = req.body;
+    const queryText = 'SELECT * FROM pfe.products WHERE id_category = $1';
+    const values = [category.id_category];
+    db.db.query(queryText,values).then((articles)=>{
+        res.json(articles);
+    }).catch((err) => {
+        res.status(500).send(err);
+    });
+});
+
 /* PUT product */
 router.put('/',function(req,res,next){
     let product = req.body;
