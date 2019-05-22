@@ -13,6 +13,7 @@ Install :
 - debug : debuging tool
 - bootstrap: frontend
 - dotenv : environement variables
+- bcrypt : encryptage des mots de passe
 
 Files :
 - .travis.yml : is use by Travis
