@@ -13,6 +13,9 @@ Install :
 - debug : debuging tool
 - bootstrap: frontend
 - dotenv : environement variables
+- ejs : render express html file
+- express-session : manage http session
+- bcrypt : encryptage des mots de passe
 
 Files :
 - .travis.yml : is use by Travis
