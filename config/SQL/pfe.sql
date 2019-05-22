@@ -32,6 +32,7 @@ CREATE TABLE pfe.products (
   description VARCHAR(255) NOT NULL,
   state VARCHAR(255) NOT NULL,
   price VARCHAR(255) NOT NULL,
+  date TIMESTAMPTZ DEFAULT Now(),
   FOREIGN KEY (id_seller) REFERENCES pfe.users(id_user),
   FOREIGN KEY (id_category) REFERENCES pfe.categories(id_category)
 );
