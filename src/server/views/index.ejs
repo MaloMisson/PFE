@@ -10,7 +10,7 @@
 
 <body>    
     <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                 <a class="navbar-brand" href="#">A(PI)rtishop</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -78,7 +78,7 @@
                             </ul>
                         }
                         </td>
-                        <td>void</td>
+                        <td>-</td>
                     </tr>
                     <tr>
                         <th >Update user</th>
@@ -102,13 +102,13 @@
                                 </ul>
                             }
                             </td>
-                            <td>void</td>
+                            <td>-</td>
                          </tr>
                         <tr>
                             <th >Get all users</th>
                             <td>GET</td>
                             <td>domain/user/all</td>
-                            <td>void</td>
+                            <td>-</td>
                             <td>JSON : {
                                 <ul>
                                     <li>pseudo</li>
@@ -149,7 +149,7 @@
                         <th >Get all products</th>
                         <td>GET</td>
                         <td>domain/article/</td>
-                        <td>void</td>
+                        <td>-</td>
                         <td>JSON : {
                             product*{
                             <ul>
@@ -224,7 +224,7 @@
                                 </ul>
                             }
                             </td>
-                        <td>void</td>
+                        <td>-</td>
                     </tr>
                     <tr>
                         <th >Update product</th>
@@ -242,7 +242,7 @@
                             </ul>
                         }
                         </td>
-                        <td>void</td>
+                        <td>-</td>
                     </tr>
                 </tbody>
             </table>
@@ -251,11 +251,120 @@
     <div class="container" id="categorie">
         <div class="row">
             <h1>Categorie</h1>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Action</th>
+                        <th scope="col">Method</th>
+                        <th scope="col">URL</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Return</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th >Get all categories</th>
+                        <td>GET</td>
+                        <td>domain/category/</td>
+                        <td>-</td>
+                        <td>JSON : {
+                            category*{
+                            <ul>
+                                <li>id_category</li>
+                                <li>name</li>
+                            </ul>
+                        }
+                        }
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <th >Add a new category</th>
+                            <td>-</td>
+                            <td>domain/category/:name</td>
+                            <td>replace the ":name" into the domain with your new category name</td>
+                            <td>-</td>
+                            </tr>
+                        <tr>
+                            <th >Get all product for a category</th>
+                            <td>GET</td>
+                            <td>domain/article/</td>
+                            <td>JSON : {
+                                <ul>
+                                    <li>id_category</li>
+                                </ul>
+                            }
+                            </td>
+                            <td>JSON : {
+                                <ul>
+                                    <li>id_seller</li>
+                                    <li>id_category</li>
+                                    <li>name</li>
+                                    <li>description</li>
+                                    <li>state</li>
+                                    <li>price</li>
+                                </ul>
+                            }
+                            </td>
+                    </tr>
+                    <tr>
+                        <th >Update category name</th>
+                            <td>-</td>
+                            <td>domain/category/:id/:newName</td>
+                            <td>Into the url, replace ":id" whith the category's id and the "newName" whith the new name</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="container" id="sale">
         <div class="row">
             <h1>Sale</h1>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Action</th>
+                        <th scope="col">Method</th>
+                        <th scope="col">URL</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Return</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th >Get all sales</th>
+                        <td>GET</td>
+                        <td>domain/sale/</td>
+                        <td>-</td>
+                        <td>JSON : {
+                            sale*{
+                            <ul>
+                                <li>id_product</li>
+                                <li>id_buyer</li>
+                                <li>id_stripe</li>
+                            </ul>
+                        }
+                        }
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <th >Add a new sale</th>
+                        <td>PUT</td>
+                        <td>domain/sale/</td>
+                        <td>JSON : {
+                                <ul>
+                                    <li>id_product</li>
+                                    <li>id_buyer</li>
+                                    <li>id_stripe</li>
+                                </ul>
+                            }
+                        </td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
