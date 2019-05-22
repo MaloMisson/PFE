@@ -13,6 +13,8 @@ Install :
 - debug : debuging tool
 - bootstrap: frontend
 - dotenv : environement variables
+- ejs : render express html file
+- express-session : manage http session
 
 Files :
 - .travis.yml : is use by Travis

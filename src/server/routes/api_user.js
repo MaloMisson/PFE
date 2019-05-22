@@ -5,10 +5,18 @@ var db = require('../modules/db1');
 
 /* POST login. */
 router.post('/login', function(req, res, next) {
+    let user = req.body;
+    const queryText = 'SELECT * FROM pfe.users WHERE pseudo = $1';
+    const values = [user.pseudo];
+    db.db.query(queryText,values).then((u)=>{
+        req.cookiesx
+    }).catch((err) => {
+        res.status(500).send(err);
+    });
     res.end('TODO login');
 });
 
-/* POST lougout. */
+/* POST logout. */
 router.post('/logout', function(req, res, next) {
     res.end('TODO logout');
 });
@@ -33,11 +41,11 @@ router.post('/update',function(req, res, next) {
     });
 });
 
-/* POST select all user. */
+/* Get select all user. */
 router.get('/all', function(req, res, next) {
     const queryText = 'SELECT * FROM pfe.users';
     db.db.query(queryText).then((users)=>{
-        res.json(users);
+        res.json(users.rows);
     }).catch((err) => {
         res.status(500).send(err);
     });
