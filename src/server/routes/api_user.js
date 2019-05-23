@@ -45,14 +45,32 @@ router.put('/', function(req, res, next) {
     
     let user = req.body;
     let passwordHashed;
-    bcrypt.hash(user.password,saltRounds,function(err,hash){
-        passwordHashed = hash;
-    });
-    const queryText = 'INSERT INTO pfe.users (pseudo,firstname,lastname,password,address,number,zip_code,city,country,email,phone,description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *';
-    const values = [user.pseudo,user.firstname,user.lastname,passwordHashed,user.address,user.number,user.zip_code,user.city,user.country,user.email,user.phone,user.description];
-    db.db. db.query(queryText, values).catch((err) => {
-        res.status(500).send(err);
-    });
+    const checkEmailQuery = 'SELECT COUNT(email) FROM pfe.users WHERE email = $1';
+    const valuesQuery = [user.email];
+    db.db.query(checkEmailQuery, valuesQuery).then((ret)=>{
+        var nbr = ret.rows[0].count;
+        console.log(nbr);
+        if(nbr==0){
+            bcrypt.hash(user.password,saltRounds,function(err,hash){
+                passwordHashed = hash;
+                const queryText = 'INSERT INTO pfe.users (pseudo,firstname,lastname,password,address,number,zip_code,city,country,email,phone,description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *';
+                const values = [user.pseudo,user.firstname,user.lastname,passwordHashed,user.address,user.number,user.zip_code,user.city,user.country,user.email,user.phone,user.description];
+                db.db.query(queryText, values).then((users)=>{
+                    var user = users.rows[0];
+                    util.setToken(user.id_user,res);
+                    res.send(user);
+                }).catch((err) => {
+                    console.log(err);
+                    res.status(500).send(err);
+                });
+            });
+        }else{
+            console.log(nbr);
+            res.status(500).send("Email already use");
+        }
+    })
+    
+    
     
 });
 
@@ -62,7 +80,7 @@ router.post('/update',function(req, res, next) {
         let user = req.body;
         const queryText = 'UPDATE pfe.users SET pseudo = $1, firstname = $2, lastname = $3, password = $4, address = $5, number = $6, zip_code = $7, city = $8, country = $9, email = $10, phone = $11, description = $12 WHERE id_user = $13 RETURNING *';
         const values = [user.pseudo,user.firstname,user.lastname,user.password,user.address,user.number,user.zip_code,user.city,user.country,user.email,user.phone,user.description,user.id_user];
-        db.db. db.query(queryText, values).catch((err) => {
+        db.db.query(queryText, values).catch((err) => {
             res.status(500).send(err);
         });
 
