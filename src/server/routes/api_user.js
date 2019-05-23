@@ -15,10 +15,11 @@ router.post('/login', function(req, res, next) { // TODO gestion des cookies/jwt
     const queryText = 'SELECT * FROM pfe.users WHERE email = $1';
     const values = [email];
     db.db.query(queryText,values).then((users)=>{
-        user = users[0];
+        user = users.rows[0];
     }).catch((err) => {
         res.status(500).send(err);
     });
+    console.log(user);
     if(user == null){
         res.status(400).send('Wrong email !');
     }else{
