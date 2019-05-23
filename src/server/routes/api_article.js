@@ -18,8 +18,8 @@ router.get('/single', function(req, res, next) {
     let product = req.body;
     const queryText = 'SELECT * FROM pfe.products WHERE id_product = $1';
     const values = [product.id_product];
-    db.db.query(queryText,values).then((articles)=>{
-        res.json(articles);
+    db.db.query(queryText,values).then((article)=>{
+        res.json(article.rows);
     }).catch((err) => {
         res.status(500).send(err);
     });
@@ -31,7 +31,7 @@ router.get('/category', function(req, res, next) {
     const queryText = 'SELECT * FROM pfe.products WHERE id_category = $1';
     const values = [category.id_category];
     db.db.query(queryText,values).then((articles)=>{
-        res.json(articles);
+        res.json(articles.rows);
     }).catch((err) => {
         res.status(500).send(err);
     });
