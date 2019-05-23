@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET single product */
-router.get('/', function(req, res, next) {
+router.get('/single', function(req, res, next) {
     let product = req.body;
     const queryText = 'SELECT * FROM pfe.products WHERE id_product = $1';
     const values = [product.id_product];
@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET all products by category */
-router.get('/', function(req, res, next) {
+router.get('/category', function(req, res, next) {
     let category = req.body;
     const queryText = 'SELECT * FROM pfe.products WHERE id_category = $1';
     const values = [category.id_category];
@@ -34,6 +34,22 @@ router.get('/', function(req, res, next) {
         res.json(articles);
     }).catch((err) => {
         res.status(500).send(err);
+    });
+});
+
+/* GET all my product */
+router.get('/myProducts', function(req, res, next) {
+    util.verifToken(req).then((decoded)=>{
+        const queryText = 'SELECT * FROM pfe.products p WHERE p.id_seller = $1';
+        const values = [decoded.id];
+        db.db.query(queryText).then((products)=>{
+            res.json(products.rows);
+        }).catch((err) => {
+            res.status(500).send(err);
+        });
+    }).catch((err)=>{
+        res.status(400).send('token check failed');
+        console.error(err);
     });
 });
 

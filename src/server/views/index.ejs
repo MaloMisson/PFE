@@ -205,7 +205,7 @@
                         <th >Get a single product</th>
                             <td>quidam</td>
                             <td>GET</td>
-                            <td>domain/article/</td>
+                            <td>domain/article/single</td>
                             <td>JSON : {
                                 <ul>
                                     <li>id_product</li>
@@ -228,7 +228,7 @@
                             <th >Get all product for a category</th>
                             <td>quidam</td>
                             <td>GET</td>
-                            <td>domain/article/</td>
+                            <td>domain/article/category</td>
                             <td>JSON : {
                                 <ul>
                                     <li>id_category</li>
@@ -246,6 +246,24 @@
                                 </ul>
                             }
                             </td>
+                    </tr>
+                    <tr>
+                        <th >Get all my products</th>
+                        <td>connected</td>
+                        <td>GET</td>
+                        <td>domain/article/myProducts</td>
+                        <td>-</td>
+                        <td>JSON :[ {
+                            <ul>
+                                <li>id_seller</li>
+                                <li>id_category</li>
+                                <li>name</li>
+                                <li>description</li>
+                                <li>state</li>
+                                <li>price</li>
+                            </ul>
+                        },...]
+                        </td>
                     </tr>
                     <tr>
                         <th >Add product</th>

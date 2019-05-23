@@ -4,11 +4,27 @@ var router = express.Router();
 var db = require('../modules/db1');
 
 /* GET all */
+/*
 router.get('/', function(req, res, next) {
     util.verifToken(req).then((decoded)=>{
         const queryText = 'SELECT * FROM pfe.sales';
         db.db.query(queryText).then((sales)=>{
             res.json(sales);
+        }).catch((err) => {
+            res.status(500).send(err);
+        });
+    }).catch((err)=>{
+        res.status(400).send('token check failed');
+        console.error(err);
+    });
+});
+*/
+router.get('/', function(req, res, next) {
+    util.verifToken(req).then((decoded)=>{
+        const queryText = 'SELECT * FROM pfe.sales s, pfe.products p WHERE s.id_buyer = $1 AND s.id_procut=p.id_product';
+        const values = [decoded.id];
+        db.db.query(queryText).then((sales)=>{
+            res.json(sales.rows);
         }).catch((err) => {
             res.status(500).send(err);
         });
