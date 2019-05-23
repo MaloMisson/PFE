@@ -5,7 +5,7 @@ var db = require('../modules/db1');
 
 /* GET all */
 router.get('/', function(req, res, next) {
-    const queryText = 'SELECT * FROM pfe.products';
+    const queryText = 'SELECT u.pseudo, p.* FROM pfe.products p, pfe.users u WHERE p.id_seller = u.id_user';
     db.db.query(queryText).then((articles)=>{
         res.json(articles.rows);
     }).catch((err) => {
@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 /* GET single product */
 router.get('/single', function(req, res, next) {
     let product = req.body;
-    const queryText = 'SELECT * FROM pfe.products WHERE id_product = $1';
+    const queryText = 'SELECT u.pseudo, p.* FROM pfe.products p, pfe.users u  WHERE p.id_product = $1 AND p.id_seller = u.id_user';
     const values = [product.id_product];
     db.db.query(queryText,values).then((article)=>{
         res.json(article.rows);
@@ -28,7 +28,7 @@ router.get('/single', function(req, res, next) {
 /* GET all products by category */
 router.get('/category', function(req, res, next) {
     let category = req.body;
-    const queryText = 'SELECT * FROM pfe.products WHERE id_category = $1';
+    const queryText = 'SELECT u.pseudo, p.* FROM pfe.products p, pfe.users u WHERE p.id_category = $1 AND p.id_seller = u.id_user';
     const values = [category.id_category];
     db.db.query(queryText,values).then((articles)=>{
         res.json(articles.rows);
