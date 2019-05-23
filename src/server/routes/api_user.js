@@ -48,23 +48,31 @@ router.put('/', function(req, res, next) {
     const valuesQuery = [user.email];
     db.db.query(checkEmailQuery, valuesQuery).then((ret)=>{
         var nbr = ret.rows[0].count;
-        console.log(nbr);
         if(nbr==0){
-            bcrypt.hash(user.password,saltRounds,function(err,hash){
-                passwordHashed = hash;
-                const queryText = 'INSERT INTO pfe.users (pseudo,firstname,lastname,password,address,number,zip_code,city,country,email,phone,description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *';
-                const values = [user.pseudo,user.firstname,user.lastname,passwordHashed,user.address,user.number,user.zip_code,user.city,user.country,user.email,user.phone,user.description];
-                db.db.query(queryText, values).then((users)=>{
-                    var user = users.rows[0];
-                    util.setToken(user.id_user,res);
-                    res.send(user);
-                }).catch((err) => {
-                    console.log(err);
-                    res.status(500).send(err);
-                });
+            const checkPseudoQuery = 'SELECT COUNT(pseudo) FROM pfe.users WHERE pseudo = $1';
+            const valuesPseudoQuery = [user.pseudo];
+                db.db.query(checkPseudoQuery, valuesPseudoQuery).then((ret)=>{
+                    var nbr = ret.rows[0].count;
+                    console.log(nbr);
+                    if(nbr==0){
+                        bcrypt.hash(user.password,saltRounds,function(err,hash){
+                            passwordHashed = hash;
+                            const queryText = 'INSERT INTO pfe.users (pseudo,firstname,lastname,password,address,number,zip_code,city,country,email,phone,description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *';
+                            const values = [user.pseudo,user.firstname,user.lastname,passwordHashed,user.address,user.number,user.zip_code,user.city,user.country,user.email,user.phone,user.description];
+                            db.db.query(queryText, values).then((users)=>{
+                                var user = users.rows[0];
+                                util.setToken(user.id_user,res);
+                                res.send(user);
+                            }).catch((err) => {
+                                console.log(err);
+                                res.status(500).send(err);
+                            });
+                        });
+                    }else{
+                        res.status(500).send("pseudo already use");
+                    }
             });
         }else{
-            console.log(nbr);
             res.status(500).send("Email already use");
         }
     })
