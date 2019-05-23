@@ -3,9 +3,11 @@ const app = express();
 const db = require('./modules/db1.js');
 const path = require('path');
 var session = require('express-session')
+const cookieParser = require('cookie-parser')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 //Router
 const indexRouter = require('./routes/index');

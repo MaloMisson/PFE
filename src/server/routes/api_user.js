@@ -1,7 +1,7 @@
-const util = require('../modules/util');
 var express = require('express');
 var router = express.Router();
 var db = require('../modules/db1');
+const util = require('../modules/util');
 
 // variables pour bcrypt
 const bcrypt = require('bcrypt');
@@ -20,10 +20,11 @@ router.post('/login', function(req, res, next) { // TODO gestion des cookies/jwt
         res.status(500).send(err);
     });
     if(user == null){
-        res.status(400).send('Bad email !');
+        res.status(400).send('Wrong email !');
     }else{
         bcrypt.compare(password,user.password,function(err,result){
             if(result){
+                util.setToken(user.id_user,res);
                 res.json(user);
             }else{
                 res.status(400).send('Bad password for this email !');
@@ -34,11 +35,13 @@ router.post('/login', function(req, res, next) { // TODO gestion des cookies/jwt
 
 /* POST logout. */
 router.post('/logout', function(req, res, next) {
-    res.end('TODO logout');
+    res.cookie('jwt',"", { maxAge: 0, httpOnly: true });
+    res.end('logout');
 });
 
 /* PUT user */
 router.put('/', function(req, res, next) {
+    
     let user = req.body;
     let passwordHashed;
     bcrypt.hash(user.password,saltRounds,function(err,hash){
@@ -49,25 +52,37 @@ router.put('/', function(req, res, next) {
     db.db. db.query(queryText, values).catch((err) => {
         res.status(500).send(err);
     });
+    
 });
 
 /* UPDATE user*/
 router.post('/update',function(req, res, next) {
-    let user = req.body;
-    const queryText = 'UPDATE pfe.users SET pseudo = $1, firstname = $2, lastname = $3, password = $4, address = $5, number = $6, zip_code = $7, city = $8, country = $9, email = $10, phone = $11, description = $12 WHERE id_user = $13 RETURNING *';
-    const values = [user.pseudo,user.firstname,user.lastname,user.password,user.address,user.number,user.zip_code,user.city,user.country,user.email,user.phone,user.description,user.id_user];
-    db.db. db.query(queryText, values).catch((err) => {
-        res.status(500).send(err);
+    util.verifToken(req).then((decoded)=>{
+        let user = req.body;
+        const queryText = 'UPDATE pfe.users SET pseudo = $1, firstname = $2, lastname = $3, password = $4, address = $5, number = $6, zip_code = $7, city = $8, country = $9, email = $10, phone = $11, description = $12 WHERE id_user = $13 RETURNING *';
+        const values = [user.pseudo,user.firstname,user.lastname,user.password,user.address,user.number,user.zip_code,user.city,user.country,user.email,user.phone,user.description,user.id_user];
+        db.db. db.query(queryText, values).catch((err) => {
+            res.status(500).send(err);
+        });
+
+    }).catch((err)=>{
+        res.status(400).send('token check failed');
+        console.error(err);
     });
 });
 
 /* Get select all user. */
 router.get('/all', function(req, res, next) {
-    const queryText = 'SELECT * FROM pfe.users';
-    db.db.query(queryText).then((users)=>{
-        res.json(users.rows);
-    }).catch((err) => {
-        res.status(500).send(err);
+    util.verifToken(req).then((decoded)=>{
+        const queryText = 'SELECT * FROM pfe.users';
+        db.db.query(queryText).then((users)=>{
+            res.json(users.rows);
+        }).catch((err) => {
+            res.status(500).send(err);
+        });
+    }).catch((err)=>{
+        res.status(400).send('token check failed');
+        console.error(err);
     });
 });
 

@@ -50,6 +50,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Action</th>
+                        <th scope="col">Statut</th>
                         <th scope="col">Method</th>
                         <th scope="col">URL</th>
                         <th scope="col">Data</th>
@@ -59,6 +60,7 @@
                 <tbody>
                     <tr>
                         <th >Add user</th>
+                        <td>quidam</td>
                         <td>PUT</td>
                         <td>domain/user/</td>
                         <td>JSON : {
@@ -82,6 +84,7 @@
                     </tr>
                     <tr>
                         <th >Log in</th>
+                        <td>quidam</td>
                         <td>POST</td>
                         <td>domain/user/login</td>
                         <td>JSON : {
@@ -111,50 +114,52 @@
                     </tr>
                     <tr>
                         <th >Update user</th>
-                            <td>POST</td>
-                            <td>domain/user/update/</td>
-                            <td>JSON : {
-                                <ul>
-                                    <li>pseudo</li>
-                                    <li>firstname</li>
-                                    <li>lastname</li>
-                                    <li>password</li>
-                                    <li>address</li>
-                                    <li>number</li>
-                                    <li>zip_code</li>
-                                    <li>city</li>
-                                    <li>country</li>
-                                    <li>email</li>
-                                    <li>phone</li>
-                                    <li>description</li>
-                                    <li>id_user</li>
-                                </ul>
-                            }
-                            </td>
-                            <td>-</td>
-                         </tr>
-                        <tr>
-                            <th >Get all users</th>
-                            <td>GET</td>
-                            <td>domain/user/all</td>
-                            <td>-</td>
-                            <td>JSON : {
-                                <ul>
-                                    <li>pseudo</li>
-                                    <li>firstname</li>
-                                    <li>lastname</li>
-                                    <li>password</li>
-                                    <li>address</li>
-                                    <li>number</li>
-                                    <li>zip_code</li>
-                                    <li>city</li>
-                                    <li>country</li>
-                                    <li>email</li>
-                                    <li>phone</li>
-                                    <li>description</li>
-                                </ul>
-                            }
-                            </td>
+                        <td>connected</td>
+                        <td>POST</td>
+                        <td>domain/user/update/</td>
+                        <td>JSON : {
+                            <ul>
+                                <li>pseudo</li>
+                                <li>firstname</li>
+                                <li>lastname</li>
+                                <li>password</li>
+                                <li>address</li>
+                                <li>number</li>
+                                <li>zip_code</li>
+                                <li>city</li>
+                                <li>country</li>
+                                <li>email</li>
+                                <li>phone</li>
+                                <li>description</li>
+                                <li>id_user</li>
+                            </ul>
+                        }
+                        </td>
+                        <td>-</td>
+                        </tr>
+                    <tr>
+                        <th >Get all users</th>
+                        <td>connected</td>
+                        <td>GET</td>
+                        <td>domain/user/all</td>
+                        <td>-</td>
+                        <td>JSON : {
+                            <ul>
+                                <li>pseudo</li>
+                                <li>firstname</li>
+                                <li>lastname</li>
+                                <li>password</li>
+                                <li>address</li>
+                                <li>number</li>
+                                <li>zip_code</li>
+                                <li>city</li>
+                                <li>country</li>
+                                <li>email</li>
+                                <li>phone</li>
+                                <li>description</li>
+                            </ul>
+                        }
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -167,6 +172,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Action</th>
+                        <th scope="col">Statut</th>
                         <th scope="col">Method</th>
                         <th scope="col">URL</th>
                         <th scope="col">Data</th>
@@ -176,6 +182,7 @@
                 <tbody>
                     <tr>
                         <th >Get all products</th>
+                        <td>quidam</td>
                         <td>GET</td>
                         <td>domain/article/</td>
                         <td>-</td>
@@ -196,6 +203,7 @@
                     </tr>
                     <tr>
                         <th >Get a single product</th>
+                            <td>quidam</td>
                             <td>GET</td>
                             <td>domain/article/</td>
                             <td>JSON : {
@@ -205,19 +213,20 @@
                             }
                             </td>
                             <td>JSON : {
-                                    <ul>
-                                        <li>id_seller</li>
-                                        <li>id_category</li>
-                                        <li>name</li>
-                                        <li>description</li>
-                                        <li>state</li>
-                                        <li>price</li>
-                                    </ul>
-                                }
-                                </td>
-                            </tr>
+                                <ul>
+                                    <li>id_seller</li>
+                                    <li>id_category</li>
+                                    <li>name</li>
+                                    <li>description</li>
+                                    <li>state</li>
+                                    <li>price</li>
+                                </ul>
+                            }
+                            </td>
+                        </tr>
                         <tr>
                             <th >Get all product for a category</th>
+                            <td>quidam</td>
                             <td>GET</td>
                             <td>domain/article/</td>
                             <td>JSON : {
@@ -240,23 +249,24 @@
                     </tr>
                     <tr>
                         <th >Add product</th>
-                            <td>PUT</td>
-                            <td>domain/article/</td>
-                            <td>JSON : {
-                                <ul>
-                                    <li>id_seller</li>
-                                    <li>id_category</li>
-                                    <li>name</li>
-                                    <li>description</li>
-                                    <li>state</li>
-                                    <li>price</li>
-                                </ul>
-                            }
-                            </td>
+                        <td>connected</td>
+                        <td>PUT</td>
+                        <td>domain/article/</td>
+                        <td>JSON : {
+                            <ul>
+                                <li>id_category</li>
+                                <li>name</li>
+                                <li>description</li>
+                                <li>state</li>
+                                <li>price</li>
+                            </ul>
+                        }
+                        </td>
                         <td>-</td>
                     </tr>
                     <tr>
                         <th >Update product</th>
+                        <td>connected</td>
                         <td>POST</td>
                         <td>domain/article/update/</td>
                         <td>JSON : {
@@ -284,6 +294,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Action</th>
+                        <th scope="col">Statut</th>
                         <th scope="col">Method</th>
                         <th scope="col">URL</th>
                         <th scope="col">Data</th>
@@ -293,6 +304,7 @@
                 <tbody>
                     <tr>
                         <th >Get all categories</th>
+                        <td>quidam</td>
                         <td>GET</td>
                         <td>domain/category/</td>
                         <td>-</td>
@@ -309,38 +321,41 @@
                     </tr>
                     <tr>
                         <th >Add a new category</th>
-                            <td>-</td>
-                            <td>domain/category/:name</td>
-                            <td>replace the ":name" into the domain with your new category name</td>
-                            <td>-</td>
-                            </tr>
-                        <tr>
-                            <th >Get all product for a category</th>
-                            <td>GET</td>
-                            <td>domain/article/</td>
-                            <td>JSON : {
-                                <ul>
-                                    <li>id_category</li>
-                                </ul>
-                            }
-                            </td>
-                            <td>JSON : {
-                                <ul>
-                                    <li>id_seller</li>
-                                    <li>id_category</li>
-                                    <li>name</li>
-                                    <li>description</li>
-                                    <li>state</li>
-                                    <li>price</li>
-                                </ul>
-                            }
-                            </td>
+                        <td>connected</td>
+                        <td>-</td>
+                        <td>domain/category/:name</td>
+                        <td>replace the ":name" into the domain with your new category name</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th >Get all product for a category</th>
+                        <td>quidam</td>
+                        <td>GET</td>
+                        <td>domain/article/</td>
+                        <td>JSON : {
+                            <ul>
+                                <li>id_category</li>
+                            </ul>
+                        }
+                        </td>
+                        <td>JSON : {
+                            <ul>
+                                <li>id_seller</li>
+                                <li>id_category</li>
+                                <li>name</li>
+                                <li>description</li>
+                                <li>state</li>
+                                <li>price</li>
+                            </ul>
+                        }
+                        </td>
                     </tr>
                     <tr>
                         <th >Update category name</th>
-                            <td>-</td>
-                            <td>domain/category/:id/:newName</td>
-                            <td>Into the url, replace ":id" whith the category's id and the "newName" whith the new name</td>
+                        <td>connected</td>
+                        <td>-</td>
+                        <td>domain/category/:id/:newName</td>
+                        <td>Into the url, replace ":id" whith the category's id and the "newName" whith the new name</td>
                         <td>-</td>
                     </tr>
                 </tbody>
@@ -354,6 +369,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Action</th>
+                        <th scope="col">Statut</th>
                         <th scope="col">Method</th>
                         <th scope="col">URL</th>
                         <th scope="col">Data</th>
@@ -363,6 +379,7 @@
                 <tbody>
                     <tr>
                         <th >Get all sales</th>
+                        <td>connected</td>
                         <td>GET</td>
                         <td>domain/sale/</td>
                         <td>-</td>
@@ -370,7 +387,6 @@
                             sale*{
                             <ul>
                                 <li>id_product</li>
-                                <li>id_buyer</li>
                                 <li>id_stripe</li>
                             </ul>
                         }
@@ -380,6 +396,7 @@
                     </tr>
                     <tr>
                         <th >Add a new sale</th>
+                        <td>connected</td>
                         <td>PUT</td>
                         <td>domain/sale/</td>
                         <td>JSON : {

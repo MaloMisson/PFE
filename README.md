@@ -16,6 +16,7 @@ Install :
 - ejs : render express html file
 - express-session : manage http session
 - bcrypt : encryptage des mots de passe
+- jsonwebtoken : jwt
 
 Files :
 - .travis.yml : is use by Travis
