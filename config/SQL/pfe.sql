@@ -50,3 +50,14 @@ CREATE TABLE pfe.sales (
 INSERT INTO pfe.users (pseudo, firstname, lastname, password, address, number, zip_code, city, country, email, phone, description) VALUES ('jholodi16','Jérémy','Holodiline','$2y$12$Vx9KFqWe5LxbjoCmW4EERuyXTTSv5tNeNRSZWN1vVAIxgW8NL.qmO','Rue Random', '42', '1000', 'Bruxelles', 'Belgium', 'jeremy.holodiline@student.vinci.be','0439098765', 'je suis un geek');
 INSERT INTO pfe.users (pseudo, firstname, lastname, password, address, number, zip_code, city, country, email, phone, description) VALUES ('mmisson16','Malo','Misson','$2y$12$0yxc5DQ/Eiug24.S652MFuCysZngA2FljRTJ1o9YTnK9Lh/aClzIq','Rue Truc', '24', '1000', 'Bruxelles', 'Belgium', 'malo.misson@student.vinci.be','0427638522','je suis egalement un geek');
 INSERT INTO pfe.users (pseudo, firstname, lastname, password, address, number, zip_code, city, country, email, phone, description) VALUES ('amozzon16','Arturo','Mozzon','$2y$12$6tksYnJGk1LXA8qq8Ls3h.XQ6tgxpHOyw5plZcmUxgXDjlIWkogH2','Rue Machin', '93', '1000', 'Bruxelles', 'Belgium', 'arturo.mozzon@student.vinci.be','0456286305','je suis effectivement egalement un geek');
+
+INSERT INTO pfe.categories (picture, name) VALUES ('null', 'cat1');
+INSERT INTO pfe.categories (picture, name) VALUES ('null', 'cat2');
+INSERT INTO pfe.categories (picture, name) VALUES ('null', 'cat3');
+INSERT INTO pfe.categories (picture, name) VALUES ('null', 'cat4');
+INSERT INTO pfe.categories (picture, name) VALUES ('null', 'cat5');
+
+INSERT INTO pfe.products (id_seller, id_category, picture, name, description, state, price) VALUES (1, 1, '/assets/images/fashion/product/15.jpg', 'produit1', 'description1', 'en vente', '100');
+INSERT INTO pfe.products (id_seller, id_category, picture, name, description, state, price) VALUES (2, 2, '/assets/images/fashion/product/15.jpg', 'produit2', 'description2', 'en vente', '101');
+INSERT INTO pfe.products (id_seller, id_category, picture, name, description, state, price) VALUES (3, 1, '/assets/images/fashion/product/15.jpg', 'produit3', 'description3', 'en vente', '102');
+INSERT INTO pfe.products (id_seller, id_category, picture, name, description, state, price) VALUES (1, 2, '/assets/images/fashion/product/15.jpg', 'produit4', 'description4', 'en vente', '103');
