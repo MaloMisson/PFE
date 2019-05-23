@@ -3,6 +3,8 @@ var express = require('express');
 var router = express.Router();
 var db = require('../modules/db1');
 
+const SOLD = "sold";
+
 /* GET all */
 /*
 router.get('/', function(req, res, next) {
@@ -38,9 +40,15 @@ router.get('/', function(req, res, next) {
 router.put('/',function(req,res,next){
     util.verifToken(req).then((decoded)=>{
         let sale = req.body;
-        const queryText = 'INSERT INTO pfe.sales (id_product,id_buyer,id_stripe) VALUES ($1,$2,$3) RETURNING *';
-        const values = [sale.id_product,decoded.id,sale.id_stripe];
-        db.db.query(queryText, values).catch((err) => {
+        var queryText = 'INSERT INTO pfe.sales (id_product,id_buyer,id_stripe) VALUES ($1,$2,$3) RETURNING *';
+        var values = [sale.id_product,decoded.id,sale.id_stripe];
+        db.db.query(queryText, values).then(()=>{
+            queryTextd = 'UPDATE pfe.products SET state = $1 WHERE id_product = $2 RETURNING *';
+            values = [SOLD,sale.id_product];
+            db.db.query(queryText, values).catch((err) => {
+                res.status(500).send(err);
+            });
+        }).catch((err) => {
             res.status(500).send(err);
         });
     }).catch((err)=>{
