@@ -7,7 +7,7 @@ var db = require('../modules/db1');
 router.get('/', function(req, res, next) {
     const queryText = 'SELECT * FROM pfe.products';
     db.db.query(queryText).then((articles)=>{
-        res.json(articles);
+        res.json(articles.rows);
     }).catch((err) => {
         res.status(500).send(err);
     });

@@ -32,6 +32,7 @@ CREATE TABLE pfe.products (
   description VARCHAR(255) NOT NULL,
   state VARCHAR(255) NOT NULL,
   price VARCHAR(255) NOT NULL,
+  date TIMESTAMP DEFAULT Now(),
   FOREIGN KEY (id_seller) REFERENCES pfe.users(id_user),
   FOREIGN KEY (id_category) REFERENCES pfe.categories(id_category)
 );
@@ -40,7 +41,7 @@ CREATE TABLE pfe.sales (
   id_sale SERIAL PRIMARY KEY,
   id_product INTEGER NOT NULL,
   id_buyer INTEGER NOT NULL,
-  sale_date TIMESTAMPTZ DEFAULT Now(),
+  sale_date TIMESTAMP DEFAULT Now(),
   id_stripe VARCHAR(255) NOT NULL,
   FOREIGN KEY (id_product) REFERENCES pfe.products(id_product),
   FOREIGN KEY (id_buyer) REFERENCES pfe.users(id_user)
