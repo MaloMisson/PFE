@@ -19,7 +19,7 @@ router.post('/login', function(req, res, next) { // TODO gestion des cookies/jwt
         if(user == null){
             res.status(400).send('Wrong email !');
         }else{
-            bcrypt.compare(password,user.password,function(err,result){
+            bcrypt.compare(password, user.password,function(err,result){
                 if(result){
                     util.setToken(user.id_user,res);
                     res.json(user);
