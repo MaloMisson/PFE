@@ -396,19 +396,22 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th >Get all sales</th>
+                        <th >Get all my purchase</th>
                         <td>connected</td>
                         <td>GET</td>
                         <td>domain/sale/</td>
                         <td>-</td>
-                        <td>JSON : {
-                            sale*{
-                            <ul>
-                                <li>id_product</li>
-                                <li>id_stripe</li>
-                            </ul>
-                        }
-                        }
+                        <td>JSON : [{
+                                <ul>
+                                    <li>id_seller</li>
+                                    <li>id_category</li>
+                                    <li>name</li>
+                                    <li>description</li>
+                                    <li>state</li>
+                                    <li>price</li>
+                                    <li>id_product</li>
+                                </ul>
+                            },...]
                         </td>
                         
                     </tr>
