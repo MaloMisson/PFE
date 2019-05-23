@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../modules/db1');
 
-const SOLD = "sold";
+const SOLD = 2;
 
 /* GET all */
 /*
