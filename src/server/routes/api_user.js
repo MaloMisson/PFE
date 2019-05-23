@@ -11,26 +11,27 @@ const saltRounds = 10;
 router.post('/login', function(req, res, next) { // TODO gestion des cookies/jwt !!!
     let email = req.body.email;
     let password = req.body.password;
-    let user;
+    var user;
     const queryText = 'SELECT * FROM pfe.users WHERE email = $1';
     const values = [email];
     db.db.query(queryText,values).then((users)=>{
-        user = users[0];
+        user = users.rows[0];
+        if(user == null){
+            res.status(400).send('Wrong email !');
+        }else{
+            bcrypt.compare(password,user.password,function(err,result){
+                if(result){
+                    util.setToken(user.id_user,res);
+                    res.json(user);
+                }else{
+                    res.status(400).send('Bad password for this email !');
+                }
+            });
+        }
     }).catch((err) => {
         res.status(500).send(err);
     });
-    if(user == null){
-        res.status(400).send('Wrong email !');
-    }else{
-        bcrypt.compare(password,user.password,function(err,result){
-            if(result){
-                util.setToken(user.id_user,res);
-                res.json(user);
-            }else{
-                res.status(400).send('Bad password for this email !');
-            }
-        });
-    }
+    
 });
 
 /* POST logout. */
