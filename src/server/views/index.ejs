@@ -203,6 +203,29 @@
                         
                     </tr>
                     <tr>
+                        <th >Get all product for a category</th>
+                        <td>quidam</td>
+                        <td>GET</td>
+                        <td>domain/article/category</td>
+                        <td>JSON : {
+                            <ul>
+                                <li>id_category</li>
+                            </ul>
+                        }
+                        </td>
+                        <td>JSON : {
+                            <ul>
+                                <li>id_seller</li>
+                                <li>id_category</li>
+                                <li>name</li>
+                                <li>description</li>
+                                <li>state</li>
+                                <li>price</li>
+                            </ul>
+                        }
+                        </td>
+                    </tr>
+                    <tr>
                         <th >Get a single product</th>
                             <td>quidam</td>
                             <td>GET</td>
@@ -343,38 +366,15 @@
                     <tr>
                         <th >Add a new category</th>
                         <td>connected</td>
-                        <td>-</td>
+                        <td>PUT</td>
                         <td>domain/category/:name</td>
                         <td>replace the ":name" into the domain with your new category name</td>
                         <td>-</td>
                     </tr>
                     <tr>
-                        <th >Get all product for a category</th>
-                        <td>quidam</td>
-                        <td>GET</td>
-                        <td>domain/article/</td>
-                        <td>JSON : {
-                            <ul>
-                                <li>id_category</li>
-                            </ul>
-                        }
-                        </td>
-                        <td>JSON : {
-                            <ul>
-                                <li>id_seller</li>
-                                <li>id_category</li>
-                                <li>name</li>
-                                <li>description</li>
-                                <li>state</li>
-                                <li>price</li>
-                            </ul>
-                        }
-                        </td>
-                    </tr>
-                    <tr>
                         <th >Update category name</th>
                         <td>connected</td>
-                        <td>-</td>
+                        <td>POST</td>
                         <td>domain/category/:id/:newName</td>
                         <td>Into the url, replace ":id" whith the category's id and the "newName" whith the new name</td>
                         <td>-</td>
